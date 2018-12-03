@@ -1,14 +1,11 @@
-import { Store } from "../../types";
-import { Action } from "../actions/counter";
-import * as types from "../action-types";
-let initState: Store = { number: 0 };
-export default function(state: Store = initState, action: Action) {
-  switch (action.type) {
-    case types.INCREMENT:
-      return { number: state.number + 1 };
-    case types.DECREMNT:
-      return { number: state.number - 1 };
-    default:
-      return state;
-  }
-}
+import { combineReducers } from "redux";
+import counter from "./counter";
+import counter2 from "./counter2";
+import { connectRouter } from "connected-react-router";
+import history from "../../history";
+let reducers = combineReducers({
+  counter,
+  counter2,
+  router: connectRouter(history)
+});
+export default reducers;
