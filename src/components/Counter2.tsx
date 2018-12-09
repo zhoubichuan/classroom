@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import actions from "../store/actions/counter";
+import actions from "../store/actions/counter2";
 import { Store, Counter2 } from "../types";
 
 interface IProps {
@@ -15,6 +15,7 @@ interface IState {
 class Counter2Componnet extends React.Component<IProps, IState> {
   render() {
     let { number, increment, decrement, incrementDelay } = this.props;
+    console.log(this.props);
     return (
       <div>
         <p>{number}</p>

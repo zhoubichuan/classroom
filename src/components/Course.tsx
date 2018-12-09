@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import actions from "../store/actions/counter";
-import { Store, Counter } from "../types";
+import actions from "../store/actions/course";
+import { Store, Course } from "../types";
 
 interface IProps {
   number: number;
@@ -13,7 +13,7 @@ interface IProps {
 interface IState {
   num: number;
 }
-class CounterComponnet extends React.Component<IProps, IState> {
+class CourseComponnet extends React.Component<IProps, IState> {
   render() {
     let { number, increment, decrement, incrementDelay, goto } = this.props;
     return (
@@ -28,7 +28,7 @@ class CounterComponnet extends React.Component<IProps, IState> {
     );
   }
 }
-let mapStateToProps = function(state: Store): Counter {
-  return state.counter;
+let mapStateToProps = function(state: Store): Course {
+  return state.course;
 };
-export default connect(mapStateToProps, actions)(CounterComponnet);
+export default connect(mapStateToProps, actions)(CourseComponnet);

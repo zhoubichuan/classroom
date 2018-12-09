@@ -1,8 +1,8 @@
 export interface Store {
-  counter: Counter;
+  course: Course;
   counter2: Counter2;
 }
-export interface Counter {
+export interface Course {
   number: number;
 }
 export interface Counter2 {

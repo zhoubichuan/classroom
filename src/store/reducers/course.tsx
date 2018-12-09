@@ -1,8 +1,8 @@
-import { Counter } from "../../types";
-import { Action } from "../actions/counter";
+import { Course } from "../../types";
+import { Action } from "../actions/Course";
 import * as types from "../action-types";
-let initState: Counter = { number: 0 };
-export default function(state: Counter = initState, action: Action) {
+let initState: Course = { number: 0 };
+export default function(state: Course = initState, action: Action) {
   switch (action.type) {
     case types.INCREMENT:
       return { number: state.number + 1 };

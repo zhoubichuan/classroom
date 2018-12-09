@@ -1,35 +1,25 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Counter from "./components/Counter";
-import Counter2 from "./components/Counter2";
+import Home from "./containers/Home";
+import Mime from "./containers/Mime";
+import Profile from "./containers/Profile";
 import { Provider } from "react-redux";
 import store from "./store";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import history from "./history";
-function Home() {
-  return <div>首页</div>;
-}
+import App from "./containers/App";
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <React.Fragment>
-        <ul>
-          <li>
-            <Link to="/">首页</Link>
-          </li>
-          <li>
-            <Link to="/counter">counter</Link>
-          </li>
-          <li>
-            <Link to="/counter2">counter2</Link>
-          </li>
-        </ul>
-        <Route exact path="/" component={Home} />
-        <Route path="/counter" component={Counter} />
-        <Route path="/counter2" component={Counter2} />
-      </React.Fragment>
+      <App>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="mime" componnet={Mime} />
+          <Route path="/profile" component={Profile} />
+        </Switch>
+      </App>
     </ConnectedRouter>
   </Provider>,
   document.getElementById("root")

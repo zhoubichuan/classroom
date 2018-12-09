@@ -14,12 +14,15 @@ module.exports = {
   },
   devServer: {
     hot: true, //启用热更新
-    contentBase: path.join(__dirname, "dist")
+    contentBase: path.join(__dirname, "dist"),
+    historyApiFallback: {
+      index: "./index.html"
+    }
   },
   module: {
     rules: [
       {
-        test: /\.tsx?/,
+        test: /\.tsx?$/,
         loader: "ts-loader"
       },
       {
