@@ -16,7 +16,8 @@ ReactDOM.render(
       <App>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="mime" componnet={Mime} />
+          <Route path="/home" component={Home} />
+          <Route path="/mime" component={Mime} />
           <Route path="/profile" component={Profile} />
         </Switch>
       </App>
