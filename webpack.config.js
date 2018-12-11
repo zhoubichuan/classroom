@@ -29,6 +29,14 @@ module.exports = {
         enforce: "pre", //pre的意思是表示这个loader要在正常loader执行前执行
         test: /\.js$/,
         loader: "source-map-loader"
+      },
+      {
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"]
+      },
+      {
+        test: /\.(jpg|png|gif)$/,
+        use: ["url-loader"]
       }
     ]
   },

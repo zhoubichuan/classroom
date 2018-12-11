@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./index.less";
 interface Props {}
-class Mime extends React.Component<Props> {
+class Tab extends React.Component<Props> {
   render() {
     return (
       <nav className="footer">
-        <NavLink to="/home">
+        <NavLink to="/">
           <i className="iconfont icon-xingqiu" />
           首页
         </NavLink>
@@ -23,4 +23,4 @@ class Mime extends React.Component<Props> {
     );
   }
 }
-export default connect()(Mime);
+export default connect()(Tab);

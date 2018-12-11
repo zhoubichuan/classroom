@@ -1,10 +1,7 @@
 export interface Store {
-  course: Course;
-  counter2: Counter2;
+  home: Home;
+  router: any;
 }
-export interface Course {
-  number: number;
-}
-export interface Counter2 {
-  number: number;
+export interface Home {
+  category: string;
 }

@@ -15,7 +15,7 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <App>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route path="/" component={Home} />
           <Route path="/home" component={Home} />
           <Route path="/mime" component={Mime} />
           <Route path="/profile" component={Profile} />
