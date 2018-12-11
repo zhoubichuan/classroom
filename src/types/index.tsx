@@ -4,4 +4,5 @@ export interface Store {
 }
 export interface Home {
   category: string;
+  sliders: string[];
 }

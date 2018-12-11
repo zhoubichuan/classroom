@@ -4,12 +4,19 @@ import Header from "./Header";
 import "./index.less";
 import { Store } from "../../types";
 import actions from "../../store/actions/home";
+import Swiper from "./Swiper";
+import { getSliders } from "../../api/home";
 
 interface Props {
   category: string;
   changeCategory: any;
+  sliders: any;
+  getSliders: any;
 }
 class Home extends React.Component<Props> {
+  componentDidMount() {
+    this.props.getSliders();
+  }
   render() {
     return (
       <React.Fragment>
@@ -17,6 +24,9 @@ class Home extends React.Component<Props> {
           category={this.props.category}
           changeCategory={this.props.changeCategory}
         />
+        <div className="main-content">
+          <Swiper sliders={this.props.sliders} />
+        </div>
       </React.Fragment>
     );
   }
