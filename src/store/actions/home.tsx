@@ -1,6 +1,6 @@
 import * as types from "../action-types";
 import { push } from "connected-react-router";
-import { getSliders } from "../../api/home";
+import { getSliders, getLessons } from "../../api/home";
 export interface chagneCagegory {
   type: string;
   payload: any;
@@ -18,6 +18,20 @@ export default {
           payload: sliders
         });
       });
+    };
+  },
+  getLessons() {
+    return function(dispatch: any, getState: any) {
+      let {
+        category,
+        lessons: { hasMore, loading, offset, limit }
+      } = getState().home;
+      if (hasMore && !loading) {
+        dispatch({ type: types.GET_HOME_LESSONS_LOADING });
+        getLessons(category, offset, limit).then(payload => {
+          dispatch({ type: types.SET_HOME_LESSONS, payload });
+        });
+      }
     };
   }
 };

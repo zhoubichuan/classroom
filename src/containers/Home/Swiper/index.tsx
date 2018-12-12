@@ -2,15 +2,23 @@ import * as React from "react";
 import { connect } from "react-redux";
 import "./index.less";
 import * as ReactSwipe from "react-swipe";
-import { string } from "prop-types";
 interface Props {
   sliders: any;
 }
-class Swiper extends React.Component<Props> {
+interface State {
+  index: number;
+}
+class Swiper extends React.Component<Props, State> {
+  state = {
+    index: 0
+  };
   render() {
     let swipeOptions = {
       auto: 1000,
-      containous: true
+      continuous: true,
+      callback: (index: number) => {
+        this.setState({ index });
+      }
     };
     let swipers = (
       <ReactSwipe className="carousel" swipeOptions={swipeOptions}>
@@ -24,6 +32,14 @@ class Swiper extends React.Component<Props> {
     return (
       <div className="home-swipers">
         {this.props.sliders.length > 0 && swipers}
+        <div className="dots">
+          {this.props.sliders.map((item: string, index: number) => (
+            <span
+              key={index}
+              className={`dot${this.state.index == index ? "active" : ""}`}
+            />
+          ))}
+        </div>
       </div>
     );
   }

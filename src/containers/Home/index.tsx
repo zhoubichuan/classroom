@@ -6,16 +6,20 @@ import { Store } from "../../types";
 import actions from "../../store/actions/home";
 import Swiper from "./Swiper";
 import { getSliders } from "../../api/home";
+import List from "./List";
 
 interface Props {
   category: string;
   changeCategory: any;
   sliders: any;
   getSliders: any;
+  lessons: any;
+  getLessons: any;
 }
 class Home extends React.Component<Props> {
   componentDidMount() {
     this.props.getSliders();
+    this.props.getLessons();
   }
   render() {
     return (
@@ -26,6 +30,10 @@ class Home extends React.Component<Props> {
         />
         <div className="main-content">
           <Swiper sliders={this.props.sliders} />
+          <List
+            lesson={this.props.lessons}
+            getLessons={this.props.getLessons}
+          />
         </div>
       </React.Fragment>
     );

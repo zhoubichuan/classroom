@@ -7,15 +7,15 @@ class Tab extends React.Component<Props> {
   render() {
     return (
       <nav className="footer">
-        <NavLink to="/">
+        <NavLink exact to="/" activeClassName="active">
           <i className="iconfont icon-xingqiu" />
           首页
         </NavLink>
-        <NavLink to="/mime">
+        <NavLink to="/mime" activeClassName="active">
           <i className="iconfont icon-react" />
           我的课程
         </NavLink>
-        <NavLink to="/profile">
+        <NavLink to="/profile" activeClassName="active">
           <i className="iconfont icon-xiaolian" />
           个人中心
         </NavLink>
