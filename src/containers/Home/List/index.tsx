@@ -2,13 +2,14 @@ import * as React from "react";
 import { connect } from "react-redux";
 import "./index.less";
 import { getLessons } from "../../../api/home";
+import Loading from "../../../components/Loading";
 interface Props {
   lesson: any;
   getLessons: any;
 }
 class List extends React.Component<Props> {
   render() {
-    let { list } = this.props.lesson;
+    let { list, hasMore, loading } = this.props.lesson;
     return (
       <div className="home-lessons">
         <div className="all-lessons">
@@ -25,6 +26,15 @@ class List extends React.Component<Props> {
           ))
         ) : (
           <div className="nodata">暂无数据</div>
+        )}
+        {loading ? (
+          <Loading />
+        ) : hasMore ? (
+          <div className="load-more" onClick={this.props.getLessons}>
+            加载更多
+          </div>
+        ) : (
+          <div className="load-more">我是有底线的</div>
         )}
       </div>
     );
