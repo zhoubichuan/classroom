@@ -1,8 +1,8 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import "./index.less";
-import { getLessons } from "../../../api/home";
 import Loading from "../../../components/Loading";
+import { Link } from "react-router-dom";
 interface Props {
   lesson: any;
   getLessons: any;
@@ -18,11 +18,16 @@ class List extends React.Component<Props> {
         </div>
         {list.length > 0 ? (
           list.map((item: any, index: number): any => (
-            <div className="lesson" key={index}>
-              <img src={item.poster} alt={item.title} />
-              <p>{item.title}</p>
-              <p>{item.price}</p>
-            </div>
+            <Link
+              key={index}
+              to={{ pathname: `/detail/${item.id}`, state: item }}
+            >
+              <div className="lesson" key={index}>
+                <img src={item.poster} alt={item.title} />
+                <p>{item.title}</p>
+                <p>{item.price}</p>
+              </div>
+            </Link>
           ))
         ) : (
           <div className="nodata">暂无数据</div>

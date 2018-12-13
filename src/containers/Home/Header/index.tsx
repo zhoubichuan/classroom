@@ -8,6 +8,7 @@ let logo = require("../../../images/logo.png");
 interface Props {
   category: string;
   changeCategory: any;
+  refreshLessons: any;
 }
 interface IState {
   showList: any;
@@ -20,6 +21,7 @@ class Header extends React.Component<Props, IState> {
   changeCategory = (event: any) => {
     let category = event.target.dataset.category;
     this.props.changeCategory(category);
+    this.setState({ showList: false }, this.props.refreshLessons);
   };
   render() {
     let { category } = this.props;

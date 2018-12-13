@@ -36,7 +36,7 @@ class Swiper extends React.Component<Props, State> {
           {this.props.sliders.map((item: string, index: number) => (
             <span
               key={index}
-              className={`dot${this.state.index == index ? "active" : ""}`}
+              className={`dot ${this.state.index == index ? "active" : ""}`}
             />
           ))}
         </div>

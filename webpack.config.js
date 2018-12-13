@@ -6,7 +6,8 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: "/"
   },
   devtool: "source-map",
   resolve: {
@@ -15,6 +16,7 @@ module.exports = {
   devServer: {
     hot: true, //启用热更新
     contentBase: path.join(__dirname, "dist"),
+    publicPath: "/",
     historyApiFallback: {
       index: "./index.html"
     }

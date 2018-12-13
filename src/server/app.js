@@ -31,6 +31,6 @@ app.get("/api/lessons/:category", function(req, res) {
   let list = data.slice(offset, offset + limit);
   let hasMore = data.length > offset + limit;
   setTimeout(function() {
-    res.json({ list, hasMore });
+    res.json({ code: 0, data: { list, hasMore } });
   }, 1000);
 });

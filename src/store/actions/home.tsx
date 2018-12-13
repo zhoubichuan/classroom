@@ -27,9 +27,41 @@ export default {
         lessons: { hasMore, loading, offset, limit }
       } = getState().home;
       if (hasMore && !loading) {
-        dispatch({ type: types.GET_HOME_LESSONS_LOADING });
-        getLessons(category, offset, limit).then(payload => {
-          dispatch({ type: types.SET_HOME_LESSONS, payload });
+        dispatch({ type: types.GET_HOME_LESSONS_LOADING, payload: true });
+        getLessons(category, offset, limit).then(result => {
+          let { code, data, error } = result;
+          if (code == 0) {
+            dispatch({
+              type: types.SET_HOME_LESSONS,
+              payload: data
+            });
+          } else {
+            dispatch({ type: types.GET_HOME_LESSONS_LOADING, payload: false });
+            alert(error);
+          }
+        });
+      }
+    };
+  },
+  refreshLessons() {
+    return function(dispatch: any, getState: any) {
+      let {
+        category,
+        lessons: { hasMore, loading, offset, limit }
+      } = getState().home;
+      if (!loading) {
+        dispatch({ type: types.REFRESH_HOME_LESSONS_LOADING, payload: true });
+        getLessons(category, 0, limit).then(result => {
+          let { code, data, error } = result;
+          if (code == 0) {
+            dispatch({ type: types.REFRESH_HOME_LESSON, payload: data });
+          } else {
+            dispatch({
+              type: types.REFRESH_HOME_LESSONS_LOADING,
+              payload: false
+            });
+            alert(error);
+          }
         });
       }
     };

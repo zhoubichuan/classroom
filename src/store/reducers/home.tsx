@@ -19,7 +19,10 @@ export default function(state: Home = initState, action: Action) {
     case types.SET_HOME_SLIDERS:
       return { ...state, sliders: action.payload };
     case types.GET_HOME_LESSONS_LOADING:
-      return { ...state, lessons: { ...state.lessons, loading: true } };
+      return {
+        ...state,
+        lessons: { ...state.lessons, loading: action.payload }
+      };
     case types.SET_HOME_LESSONS:
       return {
         ...state,
@@ -29,6 +32,28 @@ export default function(state: Home = initState, action: Action) {
           hasMore: action.payload.hasMore,
           loading: false,
           offset: state.lessons.offset + action.payload.list.length
+        }
+      };
+    case types.REFRESH_HOME_LESSONS_LOADING:
+      return {
+        ...state,
+        lessons: {
+          ...state.lessons,
+          list: [],
+          offset: 0,
+          hasMore: true,
+          loading: action.payload
+        }
+      };
+    case types.REFRESH_HOME_LESSON:
+      return {
+        ...state,
+        lessons: {
+          ...state.lessons,
+          list: action.payload.list,
+          hasMore: action.payload.hasMore,
+          loading: false,
+          offset: action.payload.list.length
         }
       };
     default:

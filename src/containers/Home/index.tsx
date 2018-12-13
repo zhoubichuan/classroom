@@ -7,6 +7,7 @@ import actions from "../../store/actions/home";
 import Swiper from "./Swiper";
 import { getSliders } from "../../api/home";
 import List from "./List";
+import { loadMore, downRefresh } from "../../utils";
 
 interface Props {
   category: string;
@@ -15,11 +16,15 @@ interface Props {
   getSliders: any;
   lessons: any;
   getLessons: any;
+  refreshLessons: any;
 }
 class Home extends React.Component<Props> {
+  mainContent: any;
   componentDidMount() {
     this.props.getSliders();
     this.props.getLessons();
+    loadMore(this.mainContent, this.props.getLessons);
+    downRefresh(this.mainContent, this.props.refreshLessons);
   }
   render() {
     return (
@@ -27,8 +32,9 @@ class Home extends React.Component<Props> {
         <Header
           category={this.props.category}
           changeCategory={this.props.changeCategory}
+          refreshLessons={this.props.refreshLessons}
         />
-        <div className="main-content">
+        <div className="main-content" ref={ref => (this.mainContent = ref)}>
           <Swiper sliders={this.props.sliders} />
           <List
             lesson={this.props.lessons}
