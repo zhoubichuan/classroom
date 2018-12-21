@@ -1,10 +1,18 @@
 let express = require("express");
 let bodyParser = require("body-parser");
+let session = require("express-session");
 let app = express();
 //解析form格式的请求体
 app.use(bodyParser.urlencoded({ extended: true }));
 //解析json格式的请求
 app.use(bodyParser.json());
+app.use(
+  session({
+    secret: "zfpx",
+    resave: true,
+    saveUninitialized: true
+  })
+);
 app.listen(3000);
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:8080");
@@ -49,4 +57,24 @@ app.post("/api/reg", (req, res) => {
     code: 0,
     success: "注册成功"
   });
+});
+//登录功能
+app.post("./api/login", (req, res) => {
+  let user = req.body;
+  let oldUser = users.find(
+    item => item.username == user.username && item.password == user.password
+  );
+  if (oldUser) {
+    req.session.user = oldUser;
+    res.json({
+      code: 0,
+      success: "登录成功",
+      user: oldUser
+    });
+  } else {
+    res.json({
+      code: 1,
+      error: "用户名或者密码错误"
+    });
+  }
 });

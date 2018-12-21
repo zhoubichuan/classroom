@@ -9,6 +9,8 @@ export default {
         dispatch({ type: SAVE_SESSION, payload: { success, error } });
         if (code == 0) {
           dispatch(push("/login"));
+        } else {
+          alert(0);
         }
       });
     };
