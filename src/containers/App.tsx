@@ -5,6 +5,8 @@ import Home from "../containers/Home";
 import Mime from "../containers/Mime";
 import Profile from "../containers/Profile";
 import Detail from "../containers/Detail";
+import Login from "../containers/Login";
+import Reg from "../containers/Reg";
 import "../common/index.less";
 
 interface IProps {
@@ -17,6 +19,8 @@ export default class App extends React.Component<IProps> {
         <Route exact path="/" component={Home} />
         <Route path="/mime" component={Mime} />
         <Route path="/profile" component={Profile} />
+        <Route path="/login" component={Login} />
+        <Route path="/reg" component={Reg} />
         <Route path="/detail/:id" component={Detail} />
         <Tab />
       </React.Fragment>

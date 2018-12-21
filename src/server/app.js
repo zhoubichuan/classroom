@@ -1,10 +1,16 @@
 let express = require("express");
+let bodyParser = require("body-parser");
 let app = express();
+//解析form格式的请求体
+app.use(bodyParser.urlencoded({ extended: true }));
+//解析json格式的请求
+app.use(bodyParser.json());
 app.listen(3000);
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:8080");
   res.header("Access-Control-Allow-Methods", "GET,POST,OPTIOINS");
-  res.header("Access-Control-Allow-Header", "Accept,Content-Type");
+  res.header("Access-Control-Allow-Headers", "Accept,Content-Type");
+  //允许客户端跨域发cookie
   res.header("Access-Control-Allow-Credentials", "true");
   if (req.method == "options") {
     res.end("");
@@ -33,4 +39,14 @@ app.get("/api/lessons/:category", function(req, res) {
   setTimeout(function() {
     res.json({ code: 0, data: { list, hasMore } });
   }, 1000);
+});
+let users = [];
+app.post("/api/reg", (req, res) => {
+  let body = req.body;
+  body.id = users.length > 0 ? users[users.length - 1].id + 1 : 1;
+  users.push(body);
+  res.json({
+    code: 0,
+    success: "注册成功"
+  });
 });

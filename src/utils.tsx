@@ -49,3 +49,12 @@ export function downRefresh(element: any, callback: any) {
     }
   }
 }
+// 封装了一个方法，用来网sessionStorage存值和取值
+export const store = {
+  set(key: string, val: string) {
+    sessionStorage.setItem(key, val);
+  },
+  get(key: string) {
+    return sessionStorage.getItem(key);
+  }
+};

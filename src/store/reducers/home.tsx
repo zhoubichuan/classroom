@@ -45,7 +45,7 @@ export default function(state: Home = initState, action: Action) {
           loading: action.payload
         }
       };
-    case types.REFRESH_HOME_LESSON:
+    case types.REFRESH_HOME_LESSONS:
       return {
         ...state,
         lessons: {

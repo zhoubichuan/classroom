@@ -7,7 +7,7 @@ import actions from "../../store/actions/home";
 import Swiper from "./Swiper";
 import { getSliders } from "../../api/home";
 import List from "./List";
-import { loadMore, downRefresh } from "../../utils";
+import { loadMore, downRefresh, store } from "../../utils";
 
 interface Props {
   category: string;
@@ -21,10 +21,18 @@ interface Props {
 class Home extends React.Component<Props> {
   mainContent: any;
   componentDidMount() {
-    this.props.getSliders();
-    this.props.getLessons();
+    if (this.props.sliders.length > 0) {
+      this.mainContent.scrollTop = store.get("homeScrollTop");
+    } else {
+      this.props.getSliders();
+      this.props.getLessons();
+    }
+
     loadMore(this.mainContent, this.props.getLessons);
     downRefresh(this.mainContent, this.props.refreshLessons);
+  }
+  componentWillUnmount() {
+    store.set("homeScrollTop", this.mainContent.scrollTop);
   }
   render() {
     return (
@@ -37,7 +45,7 @@ class Home extends React.Component<Props> {
         <div className="main-content" ref={ref => (this.mainContent = ref)}>
           <Swiper sliders={this.props.sliders} />
           <List
-            lesson={this.props.lessons}
+            lessons={this.props.lessons}
             getLessons={this.props.getLessons}
           />
         </div>

@@ -54,7 +54,7 @@ export default {
         getLessons(category, 0, limit).then(result => {
           let { code, data, error } = result;
           if (code == 0) {
-            dispatch({ type: types.REFRESH_HOME_LESSON, payload: data });
+            dispatch({ type: types.REFRESH_HOME_LESSONS, payload: data });
           } else {
             dispatch({
               type: types.REFRESH_HOME_LESSONS_LOADING,

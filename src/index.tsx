@@ -10,7 +10,7 @@ import App from "./containers/App";
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Route path="/" component={App} />
+      <Route component={App} />
     </ConnectedRouter>
   </Provider>,
   document.getElementById("root")

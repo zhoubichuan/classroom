@@ -4,12 +4,12 @@ import "./index.less";
 import Loading from "../../../components/Loading";
 import { Link } from "react-router-dom";
 interface Props {
-  lesson: any;
+  lessons: any;
   getLessons: any;
 }
 class List extends React.Component<Props> {
   render() {
-    let { list, hasMore, loading } = this.props.lesson;
+    let { list, hasMore, loading } = this.props.lessons;
     return (
       <div className="home-lessons">
         <div className="all-lessons">
