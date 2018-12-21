@@ -5,7 +5,8 @@ export const get = (url: string) => {
     //告诉客户端在跨域请求的时候一定要携带cookie
     credentials: "include",
     headers: {
-      Accept: "application/json"
+      Accept: "application/json",
+      "Content-Type": "application/json"
     }
   }).then(res => {
     return res.json();

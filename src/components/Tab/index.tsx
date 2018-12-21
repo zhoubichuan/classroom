@@ -1,9 +1,16 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import actions from "../../store/actions/session";
+import { Store } from "../../types";
 import "./index.less";
-interface Props {}
+interface Props {
+  validate: any;
+}
 class Tab extends React.Component<Props> {
+  componentWillMount() {
+    this.props.validate();
+  }
   render() {
     return (
       <nav className="footer">
@@ -23,4 +30,4 @@ class Tab extends React.Component<Props> {
     );
   }
 }
-export default connect()(Tab);
+export default connect((state: Store) => state, actions)(Tab);

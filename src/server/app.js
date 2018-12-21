@@ -10,6 +10,9 @@ app.use(
   session({
     secret: "zfpx",
     resave: true,
+    cookie: {
+      maxAge: 60 * 60 * 1000
+    },
     saveUninitialized: true
   })
 );
@@ -59,7 +62,7 @@ app.post("/api/reg", (req, res) => {
   });
 });
 //登录功能
-app.post("./api/login", (req, res) => {
+app.post("/api/login", (req, res) => {
   let user = req.body;
   let oldUser = users.find(
     item => item.username == user.username && item.password == user.password
@@ -75,6 +78,28 @@ app.post("./api/login", (req, res) => {
     res.json({
       code: 1,
       error: "用户名或者密码错误"
+    });
+  }
+});
+app.get("/api/logout", (req, res) => {
+  req.session.user = null;
+  res.json({
+    code: 0,
+    success: "退出成功"
+  });
+});
+app.get("/api/validate", (req, res) => {
+  let user = req.session.user;
+  if (user) {
+    res.json({
+      code: 0,
+      user,
+      succeess: "自动登录成功"
+    });
+  } else {
+    res.json({
+      code: 1,
+      error: "此用户未登陆"
     });
   }
 });
