@@ -1,38 +1,38 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import Header from "./Header";
-import "./index.less";
-import { Store } from "../../types";
-import actions from "../../store/actions/home";
-import Swiper from "./Swiper";
-import { getSliders } from "../../api/home";
-import List from "./List";
-import { loadMore, downRefresh, store } from "../../utils";
+import * as React from "react"
+import { connect } from "react-redux"
+import Header from "./Header"
+import "./index.less"
+import { Store } from "../../types"
+import actions from "../../store/actions/home"
+import Swiper from "./Swiper"
+import { getSliders } from "../../api/home"
+import List from "./List"
+import { loadMore, downRefresh, store } from "../../utils"
 
 interface Props {
-  category: string;
-  changeCategory: any;
-  sliders: any;
-  getSliders: any;
-  lessons: any;
-  getLessons: any;
-  refreshLessons: any;
+  category: string
+  changeCategory: any
+  sliders: any
+  getSliders: any
+  lessons: any
+  getLessons: any
+  refreshLessons: any
 }
 class Home extends React.Component<Props> {
-  mainContent: any;
+  mainContent: any
   componentDidMount() {
     if (this.props.sliders.length > 0) {
-      this.mainContent.scrollTop = store.get("homeScrollTop");
+      this.mainContent.scrollTop = store.get("homeScrollTop")
     } else {
-      this.props.getSliders();
-      this.props.getLessons();
+      this.props.getSliders()
+      this.props.getLessons()
     }
 
-    loadMore(this.mainContent, this.props.getLessons);
-    downRefresh(this.mainContent, this.props.refreshLessons);
+    loadMore(this.mainContent, this.props.getLessons)
+    downRefresh(this.mainContent, this.props.refreshLessons)
   }
   componentWillUnmount() {
-    store.set("homeScrollTop", this.mainContent.scrollTop);
+    store.set("homeScrollTop", this.mainContent.scrollTop)
   }
   render() {
     return (
@@ -42,7 +42,7 @@ class Home extends React.Component<Props> {
           changeCategory={this.props.changeCategory}
           refreshLessons={this.props.refreshLessons}
         />
-        <div className="main-content" ref={ref => (this.mainContent = ref)}>
+        <div className="main-content" ref={(ref) => (this.mainContent = ref)}>
           <Swiper sliders={this.props.sliders} />
           <List
             lessons={this.props.lessons}
@@ -50,7 +50,7 @@ class Home extends React.Component<Props> {
           />
         </div>
       </React.Fragment>
-    );
+    )
   }
 }
-export default connect((state: Store) => state.home, actions)(Home);
+export default connect((state: Store) => state.home, actions)(Home)
