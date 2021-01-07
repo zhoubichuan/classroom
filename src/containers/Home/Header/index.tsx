@@ -23,6 +23,12 @@ class Header extends React.Component<Props, IState> {
     this.props.changeCategory(category);
     this.setState({ showList: false }, this.props.refreshLessons);
   };
+  componentWillUnmount(){
+    debugger
+  }
+  componentDidMount(){
+    debugger
+  }
   render() {
     let { category } = this.props;
     return (

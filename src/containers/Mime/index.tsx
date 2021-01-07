@@ -17,9 +17,9 @@ class Mime extends React.Component<Props> {
           changeCategory={this.props.changeCategory}
           refreshLessons={this.props.refreshLesson}
         />
-        <div className="main-content" ref={(ref) => (this.mainContent = ref)}>
+        {/* <div className="main-content" ref={(ref) => (this.mainContent = ref)}>
           mine
-        </div>
+        </div> */}
       </React.Fragment>
     )
   }
