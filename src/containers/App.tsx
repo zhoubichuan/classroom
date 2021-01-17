@@ -14,6 +14,7 @@ interface IProps {
 }
 export default class App extends React.Component<IProps> {
   render() {
+    debugger
     return (
       <React.Fragment>
         <Route exact path="/" component={Home} />
