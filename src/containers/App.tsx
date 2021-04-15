@@ -14,8 +14,7 @@ interface IProps {
 }
 export default class App extends React.Component<IProps> {
   render() {
-    debugger
-    return (
+     return (
       <React.Fragment>
         <Route exact path="/" component={Home} />
         <Route path="/mime" component={Mime} />

@@ -5,11 +5,13 @@ import store from "./store";
 import { Route, Link, Switch } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import history from "./history";
-function App(){
-  debugger
-  return <div>hello</div>
-}
+import App from "./containers/App";
+
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <Route component={App} />
+    </ConnectedRouter>
+  </Provider>,
   document.getElementById("root")
 );
