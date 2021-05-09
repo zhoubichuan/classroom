@@ -1,4 +1,7 @@
-const API_HOST = "http://localhost:3000";
+let API_HOST = "http://localhost:3000";
+if(location.href.includes('zhoubichuan')){
+  API_HOST = 'https://zhoubichuan.github.io/classroom-react'
+}
 export const get = (url: string) => {
   return fetch(API_HOST + url, {
     method: "GET",
