@@ -1,6 +1,6 @@
 let API_HOST = "http://localhost:3000";
 if(location.href.includes('zhoubichuan')){
-  API_HOST = 'https://zhoubichuan.github.io/classroom-react'
+  API_HOST = 'https://yapi.baidu.com/mock/56170/classroom'
 }
 export const get = (url: string) => {
   return fetch(API_HOST + url, {
