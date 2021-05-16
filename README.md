@@ -10,6 +10,3 @@ npm run dev    # 启动项目
 ```sh
 node app.js
 ```
-
-
-

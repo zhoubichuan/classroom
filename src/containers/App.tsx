@@ -7,7 +7,7 @@ import Profile from "../containers/Profile";
 import Detail from "../containers/Detail";
 import Login from "../containers/Login";
 import Reg from "../containers/Reg";
-import "../common/index.less";
+// import "../common/index.less";
 
 interface IProps {
   children: any;

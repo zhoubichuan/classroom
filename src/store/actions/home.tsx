@@ -13,7 +13,6 @@ export default {
   getSliders() {
     return function(dispatch: any, getState: any) {
       getSliders().then(sliders => {
-        debugger
         dispatch({
           type: types.SET_HOME_SLIDERS,
           payload: sliders.data

@@ -3,12 +3,12 @@ export function loadMore(element: any, callback: any) {
   element.addEventListener("scroll", function() {
     timer && clearTimeout(timer);
     timer = setTimeout(function() {
-      let clientHeight = element.clientHeight;
-      let scrollTop = element.scrollTop;
-      let scrollHeight = element.scrollHeight;
-      if (clientHeight + scrollTo + 10 >= scrollHeight) {
-        callback();
-      }
+      // let clientHeight = element.clientHeight;
+      // let scrollTop = element.scrollTop;
+      // let scrollHeight = element.scrollHeight;
+      // if (clientHeight + scrollTo + 10 >= scrollHeight) {
+      //   callback();
+      // }
     }, 300);
   });
 }
@@ -17,7 +17,7 @@ export function downRefresh(element: any, callback: any) {
   let distance: number;
   let originalTop = element.offsetTop;
   element.addEventListener("touchstart", function(event: any) {
-    if (element.offsetTop == originalTop && element.scrollTop == 0) {
+    if (element.offsetTop === originalTop && element.scrollTop === 0) {
       startY = event.touches[0].pageY;
       element.addEventListener("touchmove", touchMove);
       element.addEventListener("touchend", touchEnd);
