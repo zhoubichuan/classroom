@@ -12,9 +12,9 @@ import { ConnectedRouter } from "connected-react-router"
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      {/* <ConnectedRouter history={history}> */}
-        {/* <Route path='/' element={<App1/>} /> */}
-      {/* </ConnectedRouter> */}
+      {/* <ConnectedRouter history={history}>
+        <Route path='/' element={<App/>} />
+      </ConnectedRouter> */}
       <App/>
     </React.StrictMode>
     ,

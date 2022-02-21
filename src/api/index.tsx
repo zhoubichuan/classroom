@@ -1,4 +1,4 @@
-let API_HOST = "localhost:3000"
+let API_HOST = "localhost:8000"
 export const get = (url: string) => {
   return fetch(API_HOST + url, {
     method: "GET",

@@ -16,9 +16,11 @@ app.use(
     saveUninitialized: true
   })
 );
-app.listen(3000);
+app.listen(8000,() => {
+  console.log('成功启动8000服务')
+});
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header("Access-Control-Allow-Methods", "GET,POST,OPTIOINS");
   res.header("Access-Control-Allow-Headers", "Accept,Content-Type");
   //允许客户端跨域发cookie

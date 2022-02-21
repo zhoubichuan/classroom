@@ -1,7 +1,7 @@
 import * as React from "react"
 import { connect } from "react-redux"
 import Header from "./Header"
-import "./index.less"
+// import "./index.less"
 
 interface Props {
   category?: string
