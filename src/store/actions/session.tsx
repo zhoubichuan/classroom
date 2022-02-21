@@ -4,7 +4,7 @@ import { push } from "connected-react-router";
 export default {
   reg(body: any) {
     return function(dispatch: any) {
-      reg(body).then(response => {
+      reg(body).then((response:any) => {
         let { code, success, error, user } = response;
         dispatch({ type: SAVE_SESSION, payload: { success, error, user } });
         if (code == 0) {
@@ -17,7 +17,7 @@ export default {
   },
   login(body: any) {
     return function(dispatch: any) {
-      login(body).then(response => {
+      login(body).then((response:any) => {
         let { code, success, error, user } = response;
         dispatch({ type: SAVE_SESSION, payload: { success, error, user } });
         if (code == 0) {
@@ -30,7 +30,7 @@ export default {
   },
   logout() {
     return function(dispatch: any) {
-      logout().then(response => {
+      logout().then((response:any) => {
         let { code, success, error } = response;
         dispatch({
           type: SAVE_SESSION,
@@ -49,7 +49,7 @@ export default {
   },
   validate() {
     return function(dispatch: any) {
-      validate().then(response => {
+      validate().then((response:any) => {
         let { code, success, error, user } = response;
         dispatch({ type: SAVE_SESSION, payload: { success, error, user } });
       });

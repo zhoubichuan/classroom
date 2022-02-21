@@ -20,7 +20,7 @@ class List extends React.Component<Props> {
           list.map((item: any, index: number): any => (
             <Link
               key={index}
-              to={{ pathname: `/detail/${item.id}`, state: item }}
+              to={{ pathname: `/detail/${item.id}`}}
             >
               <div className="lesson" key={index}>
                 <img src={item.poster} alt={item.title} />

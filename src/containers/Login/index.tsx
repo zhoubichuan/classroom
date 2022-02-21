@@ -8,7 +8,7 @@ import actions from "../../store/actions/session";
 declare function require(url: string): string;
 let profile = require("../../images/profile.png");
 interface IProps {
-  history: any;
+  history?: any;
   login: any;
 }
 //match history location 只要一个组件是从Route中渲染出来的，那么就会有这三个属性

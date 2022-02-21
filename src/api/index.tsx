@@ -1,4 +1,4 @@
-let API_HOST = "https://yapi.baidu.com/mock/56170/classroom";
+let API_HOST = "localhost:3000"
 export const get = (url: string) => {
   return fetch(API_HOST + url, {
     method: "GET",
@@ -6,18 +6,18 @@ export const get = (url: string) => {
     credentials: "include",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
-    }
-  }).then(res => {
-    return res.json();
-  });
-};
+      "Content-Type": "application/json",
+    },
+  }).then((res) => {
+    return res.json()
+  })
+}
 export const post = (url: string, body: any) => {
   return fetch(API_HOST + url, {
     method: "POST",
     credentials: "include",
     headers: {
-      Accept: "application/json"
-    }
-  }).then(res => res.json());
-};
+      Accept: "application/json",
+    },
+  }).then((res) => res.json())
+}

@@ -6,7 +6,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group"
 declare function require(url: string): string
 let logo = require("../../../images/logo.png")
 interface Props {
-  category: string
+  category: any
   changeCategory: any
   refreshLessons: any
 }

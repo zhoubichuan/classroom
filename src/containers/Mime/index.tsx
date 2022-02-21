@@ -4,9 +4,9 @@ import Header from "./Header"
 import "./index.less"
 
 interface Props {
-  category: string
-  changeCategory: any
-  refreshLesson: any
+  category?: string
+  changeCategory?: any
+  refreshLesson?: any
 }
 class Mime extends React.Component<Props> {
   render() {

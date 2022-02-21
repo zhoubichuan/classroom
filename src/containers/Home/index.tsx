@@ -11,7 +11,7 @@ import { loadMore, downRefresh, store } from "../../utils"
 
 interface Props {
   category: string
-  changeCategory: any
+  changeCategory?: any
   sliders: any
   getSliders: any
   lessons: any
@@ -36,7 +36,7 @@ class Home extends React.Component<Props> {
   }
   render() {
     return (
-      <React.Fragment>
+      <div>
         <Header
           category={this.props.category}
           changeCategory={this.props.changeCategory}
@@ -49,7 +49,7 @@ class Home extends React.Component<Props> {
             getLessons={this.props.getLessons}
           />
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }

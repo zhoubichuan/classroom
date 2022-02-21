@@ -8,7 +8,7 @@ import actions from "../../store/actions/session";
 declare function require(url: string): string;
 let profile = require("../../images/profile.png");
 interface IProps {
-  history: any;
+  history?: any;
   reg: any;
 }
 class Reg extends React.Component<IProps> {

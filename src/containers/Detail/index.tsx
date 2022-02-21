@@ -4,8 +4,8 @@ import "./index.less";
 import NavHeader from "../../components/NavHeader";
 import { GET_HOME_LESSONS_LOADING } from "../../store/action-types";
 interface Props {
-  location: any;
-  history: any;
+  location?: any;
+  history?: any;
 }
 class Detail extends React.Component<Props> {
   render() {
