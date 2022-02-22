@@ -8,21 +8,40 @@ import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 import { Route } from "react-router-dom"
 import { ConnectedRouter } from "connected-react-router"
+import './index.css';
 
-ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      {/* <ConnectedRouter history={history}>
-        <Route path='/' element={<App/>} />
-      </ConnectedRouter> */}
-      <App/>
-    </React.StrictMode>
-    ,
-  </Provider>,
-  document.getElementById("root")
-)
+reportWebVitals();
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals()
+function render(props = {}) {
+  ReactDOM.render(
+    <Provider store={store}>
+      <React.StrictMode>
+        {/* <ConnectedRouter history={history}>
+          <Route path='/' element={<App/>} />
+        </ConnectedRouter> */}
+        <App/>
+      </React.StrictMode>
+      ,
+    </Provider>,
+    document.getElementById("root")
+  )
+  reportWebVitals()
+}
+if (window.__POWERED_BY_QIANKUN__) {
+  window.__webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__
+  console.log('1111111111', window.__webpack_public_path__)
+} else {
+  console.log('2222222222')
+  render()
+}
+
+export async function bootstrap(props:any) {
+  console.log(props)
+}
+export async function mount(props:any) {
+  render(props)
+  // props.fns.forEach(fn => fn('加载完成'))
+}
+export async function unmount() {
+  ReactDOM.unmountComponentAtNode(document.getElementById('root') as HTMLElement)
+}
