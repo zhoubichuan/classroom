@@ -1,6 +1,5 @@
 export interface Store {
   home: Home;
-  router: any;
   session: Session;
 }
 export interface Home {

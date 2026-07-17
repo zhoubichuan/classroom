@@ -8,7 +8,7 @@ interface Props {
   validate: any;
 }
 class Tab extends React.Component<Props> {
-  componentWillMount() {
+  componentDidMount() {
     this.props.validate();
   }
   render() {

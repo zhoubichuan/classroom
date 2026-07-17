@@ -1,3 +1,8 @@
-import { createBrowserHistory } from "history";
-let history = createBrowserHistory();
-export default history;
+export function push(path: string) {
+  window.history.pushState(null, "", path);
+  window.dispatchEvent(new PopStateEvent("popstate"));
+}
+
+export function goBack() {
+  window.history.back();
+}

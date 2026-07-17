@@ -2,10 +2,9 @@ import { createStore, applyMiddleware } from "redux";
 import reducers from "./reducers";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import { routerMiddleware } from "connected-react-router";
-import history from "../history";
+const middlewares = process.env.NODE_ENV === "test" ? [thunk] : [thunk, logger as any];
 let store = createStore(
   reducers,
-  applyMiddleware(routerMiddleware(history), thunk, logger)
+  applyMiddleware(...middlewares)
 );
 export default store;
